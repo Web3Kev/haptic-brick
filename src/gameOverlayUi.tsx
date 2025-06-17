@@ -157,10 +157,12 @@ const GameOverlayUI = () => {
             </a>
             <p>using</p>
             <p style={{ color: "indianred", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>R3F</p>
-            {/* <p style={{ color: "teal", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>React XR</p> */}
             <p style={{ color: "royalblue", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Rapier</p>
-            {/* <p style={{ color: "hotpink", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Typescript</p> */}
-           
+            <p>3D Model:</p>
+            <p style={{ color: "hotpink", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>"2x2 Lego Brick"</p>
+            <p>by:</p>
+            <p style={{ color: "teal", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Aleks P</p>
+            
           </>
         </div>
         )}

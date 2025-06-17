@@ -1,6 +1,9 @@
-// BrickInstance.tsx
-
-// "2x2 Lego Brick" (https://skfb.ly/6YZrA) by Aleks P is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+/*
+Author: Aleks P (https://sketchfab.com/Aleksp)
+License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+Source: https://sketchfab.com/3d-models/2x2-lego-brick-fe10ac44c033412bbd43afb86cca6254
+Title: 2x2 Lego Brick
+*/
 
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
