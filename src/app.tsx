@@ -116,12 +116,10 @@ const VIBRATE_THROTTLE_MS = 100; // Allow 1 vibration per 100ms
 
 const haptic = (e: any) => {
   const force = e.maxForceMagnitude;
-  // console.log(force)
 
   if (force && force > 4.5) {
-    // console.log("Force:", force);
 
-    // Map 6–30 → 0.1–1.0, clamp anything >30 to 1.0
+    // Map 4.5–20 → 0.2–1.0, clamp anything >20 to 1.0
     const mapForce = (val: number) => {
       if (val >= 20) return 1.0;
       const minVal = 4.5;
@@ -138,15 +136,14 @@ const haptic = (e: any) => {
       (navigator as any).haptic([
         { intensity, sharpness: 0.8 }
       ]);
-    } else 
-    if ("vibrate" in navigator) {
+    } 
+    else if ("vibrate" in navigator) {
+
       const now = Date.now();
       if (now - lastVibrateTime < VIBRATE_THROTTLE_MS) {
         return; // Too soon, skip
       }
-
       lastVibrateTime = now;
-
       navigator.vibrate(5);
     }
   }
