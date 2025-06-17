@@ -3,24 +3,24 @@
 Throw balls inside a cube. Make them bounce.
 Each object colliding with the walls will create haptic feedback.
 
-On iOS, this only works when viewed from the app "Brrrowser", which wraps "navigator.vibrate". However, this example also uses a Brrrowser app exclusive "navigator.haptic" call.
+On iOS, this only works when viewed from the app "Brrrowser", which wraps `navigator.vibrate`. However, this example also uses a Brrrowser app exclusive `navigator.haptic` call.
 
 `navigator.haptic` leverages the full subtility of iOS haptic engine, giving access to intensity and sharpeness of the vibration, as offered by iOS's Haptic's engine.
 
-This experience is still usable for android users, as "navigator.haptic" will default back to "navigator.vibrate", which is normally supported on android devices.
+This experience is still usable for android users, as `navigator.haptic` will default back to `navigator.vibrate`, which is normally supported on android devices.
 
-"Navigator.vibrate" only offers a time-based vibration and no intensity or sharpness tuning unlike "navigator.haptic" (exclusive to Brrrowser app on iOS).
+`navigator.vibrate` only offers a time-based vibration and no intensity or sharpness tuning unlike `navigator.haptic` (exclusive to Brrrowser app on iOS).
 
-"navigator.vibrate" works great for occasional vibrations such as notifications, or events.
-In this example we use the vibration along with rapier's "onContactForce" giving access to "totalForceMagnitude" on collisions. 
+`navigator.vibrate` works great for occasional vibrations such as notifications, or events.
+In this example we use the vibration along with rapier's `onContactForce` giving access to `totalForceMagnitude` on collisions. 
 
 The calls can be trigger multiple times per seconds. 
 
-"Navigator.haptic" will manage it properly, along with various intensities depending on the force. 
+`navigator.haptic` will manage it properly, along with various intensities depending on the force. 
 
-"Navigator.vibrate" however, cannot deal with repeated calls and will crash the experience if not handled properly.
+`navigator.vibrate` however, cannot deal with repeated calls and will crash the experience if not handled properly.
 
-In the snippet below, we first test for the presence of "Navigator.haptic", clamp and map the intensity to "Navigator.haptic"'s api, then fall back to "Navigator.vibrate" if the experience isn't viewed through the Brrrowse's app and "Navigator.vibrate" is available. 
+In the snippet below, we first test for the presence of `navigator.haptic`, clamp and map the intensity to `navigator.haptic`'s api, then fall back to `navigator.vibrate` if the experience isn't viewed through the Brrrowse's app and `navigator.vibrate` is available. 
 We then restrict the excessive multiple calls in order to still provide vibration feedback without cluttering the main thread, by allowing a maximum of 1 vibration per 100ms:
 
 ``` 
