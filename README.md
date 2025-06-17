@@ -5,7 +5,7 @@ Each object colliding with the walls will create haptic feedback.
 
 On iOS, this only works when viewed from the app "Brrrowser", which wraps "navigator.vibrate". However, this example also uses a Brrrowser app exclusive "navigator.haptic" call.
 
-"navigator.haptic" leverages the full subtility of iOS haptic engine, giving access to intensity and sharpeness of the vibration, as offered by iOS's Haptic's engine.
+`navigator.haptic` leverages the full subtility of iOS haptic engine, giving access to intensity and sharpeness of the vibration, as offered by iOS's Haptic's engine.
 
 This experience is still usable for android users, as "navigator.haptic" will default back to "navigator.vibrate", which is normally supported on android devices.
 
