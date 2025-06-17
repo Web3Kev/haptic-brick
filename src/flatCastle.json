@@ -1,0 +1,100 @@
+[
+
+ 
+
+
+
+   {
+    "startPos": [-4, 0, 0],
+    "totalBricks": 15
+  },
+  {
+    "startPos": [-3, 0, 0],
+    "totalBricks": 15
+  },
+  {
+    "startPos": [-3, 0, 1],
+    "totalBricks": 15
+  },
+  {
+    "startPos": [-4, 0, 1],
+    "totalBricks": 15
+  },
+ 
+
+
+
+ {
+    "startPos": [4, 0, 0],
+    "totalBricks": 15
+  },
+  {
+    "startPos": [3, 0, 0],
+    "totalBricks": 15
+  },
+  {
+    "startPos": [3, 0, 1],
+    "totalBricks": 15
+  },
+  {
+    "startPos": [4, 0, 1],
+    "totalBricks": 15
+  },
+
+
+
+
+
+
+
+
+
+  {
+    "startPos": [-2, 0, 1],
+    "totalBricks": 8
+  },
+  {
+    "startPos": [-1, 0, 1],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [0, 0, 1],
+    "totalBricks": 8
+  },
+  {
+    "startPos": [1, 0, 1],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [2, 0, 1],
+    "totalBricks": 8
+  },
+
+   {
+    "startPos": [-2, 0,  0],
+    "totalBricks": 7
+  },
+  {
+    "startPos": [-1, 0,  0],
+    "totalBricks": 7
+  },
+  {
+    "startPos": [0, 0, 0],
+    "totalBricks": 7
+  },
+  {
+    "startPos": [1, 0,  0],
+    "totalBricks": 7
+  },
+  {
+    "startPos": [2, 0, 0],
+    "totalBricks": 7
+  }
+
+
+  
+
+
+
+
+]

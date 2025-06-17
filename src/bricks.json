@@ -1,0 +1,349 @@
+[
+
+ 
+
+
+
+   {
+    "startPos": [-2, -1.75, 2],
+    "totalBricks": 15,
+    "brickHeight": 0.15
+  },
+  {
+    "startPos": [-1.5, -1.75, 2],
+    "totalBricks": 15,
+    "brickHeight": 0.15
+  },
+  {
+    "startPos": [-1.5, -1.75, 1.5],
+    "totalBricks": 15,
+    "brickHeight": 0.15
+  },
+  {
+    "startPos": [-2, -1.75, 1.5],
+    "totalBricks": 15,
+    "brickHeight": 0.15
+  },
+ 
+
+
+
+      {
+    "startPos": [2, -1.75, 2],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, 2],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, 1.5],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [2, -1.75, 1.5],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+
+
+
+
+    {
+    "startPos": [2, -1.75, -2],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, -2],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, -1.5],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [2, -1.75, -1.5],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+
+
+
+
+  {
+    "startPos": [-2, -1.75, -2],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-1.5, -1.75, -2],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-1.5, -1.75, -1.5],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-2, -1.75, -1.5],
+    "totalBricks": 10,
+    "brickHeight": 0.25
+  },
+
+
+
+
+  {
+    "startPos": [-1, -1.75, -2],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+ 
+  {
+    "startPos": [-0.5, -1.75, -2],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0, -1.75, -2],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+   {
+    "startPos": [0.5, -1.75, -2],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1, -1.75, -2],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+
+  {
+    "startPos": [-1, -1.75, -1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-0.5, -1.75, -1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0, -1.75, -1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+   {
+    "startPos": [0.5, -1.75, -1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1, -1.75, -1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+
+
+
+
+
+  {
+    "startPos": [-1, -1.75, 2],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-0.5, -1.75, 2],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0, -1.75, 2],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0.5, -1.75, 2],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1, -1.75, 2],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+
+   {
+    "startPos": [-1, -1.75,  1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-0.5, -1.75,  1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0, -1.75,  1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0.5, -1.75,  1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1, -1.75, 1.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+
+
+  {
+    "startPos": [-2, -1.75, -1],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+   {
+    "startPos": [-2, -1.75, -0.5],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-2, -1.75, 0],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+    {
+    "startPos": [-2, -1.75, 0.5],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-2, -1.75, 1],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+
+  {
+    "startPos": [-1.5, -1.75, -1],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+   {
+    "startPos": [-1.5, -1.75, -0.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-1.5, -1.75, 0],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+    {
+    "startPos": [-1.5, -1.75, 0.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [-1.5, -1.75, 1],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+
+
+
+   {
+    "startPos": [2, -1.75, -1],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [2, -1.75, -0.5],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [2, -1.75, 0],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [2, -1.75, 0.5],
+    "totalBricks": 6,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [2, -1.75, 1],
+    "totalBricks": 5,
+    "brickHeight": 0.25
+  },
+
+    {
+    "startPos": [1.5, -1.75, -1],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, -0.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, 0],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, 0.5],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [1.5, -1.75, 1],
+    "totalBricks": 4,
+    "brickHeight": 0.25
+  },
+
+
+  {
+    "startPos": [-0.25, -1.75, -0.25],
+    "totalBricks": 8,
+    "brickHeight": 0.25
+  },
+   {
+    "startPos": [0.25, -1.75, -0.25],
+    "totalBricks": 8,
+    "brickHeight": 0.25
+  },
+   {
+    "startPos": [-0.25, -1.75, 0.25],
+    "totalBricks": 8,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0.25, -1.75, 0.25],
+    "totalBricks": 8,
+    "brickHeight": 0.25
+  },
+  {
+    "startPos": [0, 0.25, 0],
+    "totalBricks": 2,
+    "brickHeight": 0.25
+  }
+
+
+
+
+]

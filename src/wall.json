@@ -1,0 +1,129 @@
+[
+
+
+     {
+    "startPos": [-2, 0, 2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [-1, 0, 2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [0, 0, 2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [1, 0, 2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [2, 0, 2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [-2, 0, 1],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [-1, 0, 1],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [0, 0, 1],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [1, 0, 1],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [2, 0, 1],
+    "totalBricks": 10
+  },
+
+   {
+    "startPos": [-2, 0,  0],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [-1, 0,  0],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [0, 0, 0],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [1, 0,  0],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [2, 0, 0],
+    "totalBricks": 10
+  },
+
+     {
+    "startPos": [-2, 0, -2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [-1, 0, -2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [0, 0, -2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [1, 0, -2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [2, 0, -2],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [-2, 0, -1],
+    "totalBricks": 10
+  },
+  {
+    "startPos": [-1, 0, -1],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [0, 0, -1],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [1, 0, -1],
+    "totalBricks": 1
+  },
+  {
+    "startPos": [2, 0, -1],
+    "totalBricks": 10
+  },
+
+  
+  {
+    "startPos": [-1.5, 11, 1.5],
+    "totalBricks": 5
+  },
+  {
+    "startPos": [1.5, 11, 1.5],
+    "totalBricks": 5
+  }
+  ,
+  {
+    "startPos": [-1.5, 11, -1.5],
+    "totalBricks": 5
+  },
+  {
+    "startPos": [1.5, 11, -1.5],
+    "totalBricks": 5
+  }
+
+
+
+
+]
