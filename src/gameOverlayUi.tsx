@@ -122,7 +122,7 @@ const GameOverlayUI = () => {
       <div className="game-over">
         
         <div className="game-over-header">
-          <h2>Vibration Demo</h2>
+          <h2>Haptic Brick</h2>
         </div>
          <br></br>
         <p>Demolish this Lego Castle<br></br><br></br> Tap or click to throw cannon balls</p>
@@ -139,10 +139,8 @@ const GameOverlayUI = () => {
       {showInfo && (
         <div className="game-share">
            <div className="close-button"><button onClick={()=>{setShowInfo(false); buttonVibrate();}}>✖</button></div>
-        
            <>
-            <p>This mini project is to illustrate the vibration enabling Brrrowser app on iOS</p>
-
+            <h2>Haptic Brick</h2>
             <p >made by</p>
             
             {/* <p style={{ color: "orange", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Kevin Thien</p>
@@ -157,12 +155,13 @@ const GameOverlayUI = () => {
             </a>
             <p>using</p>
             <p style={{ color: "indianred", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>R3F</p>
-            <p style={{ color: "royalblue", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Rapier</p>
+            <p style={{ color: "indianred", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Rapier</p>
             <p>3D Model:</p>
-            <p style={{ color: "hotpink", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>"2x2 Lego Brick"</p>
+            <p style={{ color: "indianred", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>"2x2 Lego Brick"</p>
             <p>by:</p>
             <p style={{ color: "teal", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Aleks P</p>
-            
+            <p>This mini project is to illustrate the use of navigation.vibrate and especially its custom integration in the vibration enabling Brrrowser app on iOS</p>
+
           </>
         </div>
         )}

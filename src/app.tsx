@@ -167,8 +167,8 @@ const haptic = (e: any) => {
 
   return (
    <div className="app-container">
-      <Loader/>
-      <GameOverlayUI/>
+      {/* <Loader/> */}
+      
       <Canvas
        className="canvas-container"
         camera={{ position: [0, 0.6, 4], fov: 80,near: 0.001, far: 1000 }}
@@ -263,7 +263,8 @@ const haptic = (e: any) => {
         {/* <OrbitControls/> */}
         </Suspense>
       </Canvas>
-      
+      <Loader/>
+      <GameOverlayUI/>
 
       
     </div>
