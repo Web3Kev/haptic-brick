@@ -89,10 +89,11 @@ const GameOverlayUI = () => {
               objectFit: "contain",
             }}/>
         
-        </button>}
-        
+        </button>}        
 
       </div>
+
+      
 
        <div className="vertical-right-column-bottombased">
 
@@ -119,9 +120,9 @@ const GameOverlayUI = () => {
 
       {/* INTRO SCREEN */}
       {!gameStarted && !showInfo &&(
-      <div className="game-over">
+      <div className="intro">
         
-        <div className="game-over-header">
+        <div className="intro-header">
           <h2>Haptic Brick</h2>
         </div>
          <br></br>
@@ -137,7 +138,7 @@ const GameOverlayUI = () => {
 
       {/* INFO */}
       {showInfo && (
-        <div className="game-share">
+        <div className="credits">
            <div className="close-button"><button onClick={()=>{setShowInfo(false); buttonVibrate();}}>✖</button></div>
            <>
             <h2>Haptic Brick</h2>

@@ -148,29 +148,15 @@ const haptic = (e: any) => {
     }
   }
 };
-
- useEffect(() => {
-    const appHeight = () => {
-      const doc = document.documentElement;
-      doc.style.setProperty('--app-height', `${window.innerHeight}px`);
-    };
-    appHeight();
-    window.addEventListener('resize', appHeight);
-    window.addEventListener('orientationchange', appHeight);
-    return () => {
-      window.removeEventListener('resize', appHeight);
-      window.removeEventListener('orientationchange', appHeight);
-    };
-  }, []);
-
  
 
+
   return (
-   <div className="app-container">
+
+     <div className="canvas-container">
       {/* <Loader/> */}
       
       <Canvas
-       className="canvas-container"
         camera={{ position: [0, 0.6, 4], fov: 80,near: 0.001, far: 1000 }}
         shadows
       >

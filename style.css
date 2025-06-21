@@ -4,29 +4,29 @@
   -moz-user-select: none;    
   -ms-user-select: none;     
   user-select: none;        
+    
 }
 
 html,
 body,
 #root {
-  /* position: fixed;  */
-  /* This prevented full screen */
+
   top: 0;
   left: 0;
-  width: 100%;
-  /* height: 100%; */
   background: rgb(238, 104, 104);
-  margin: 0 auto;
+  margin: 0;
   padding:0;
-  min-height: 100vh;
   overflow: hidden;
   right: 0;
   bottom:0;
-  flex-direction: column;
+  /* flex-direction: column; */
   font-family: 'Arial', sans-serif;
+
   /* prevent double click zoom */
   touch-action: manipulation; 
-
+  /* width: 100vw; */
+  width: 100vw;
+  height: 100vh;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -35,17 +35,11 @@ body,
 }
 
 
-.app-container {
-  position: relative;
-  width: 100%;
-  height: var(--app-height); /* Fallback for browsers that don't support dvh, set in App.jsx with appHeight */
-  overflow: hidden;
-}
-  
   .canvas-container {
-    width: 100%;
-    height: 100%;
-  }
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+}
   
   
 
@@ -59,83 +53,7 @@ body,
 }
 
 
-.ARbutton{
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  border-radius: 12px;
-  background: rgb(135, 155, 214);
-  transition: background 0.2s;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-  height: 50px;
-  pointer-events: auto;
-  z-index: 1000;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-}
 
-.middle-screen{
-  position: absolute;
-  top:  80%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-80%);
-  padding: 10px 20px;
-  border-radius: 12px;
-  background: teal;
-  transition: background 0.2s;
-  color: white;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-  height: 50px;
-  z-index: 1000;
-  pointer-events: auto;
-  cursor: pointer;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.middle-screen-drop{
-  position: absolute;
-  top:  96%;
-  right: 40px;
-  transform: translateY(-96%);
-  padding: 10px 20px;
-  border-radius: 12px;
-  background: none;
-  transition: background 0.2s;
-  color: rgb(118, 116, 116); 
-  text-shadow: 0px 3px 2px rgba(111, 80, 80, 0.2);
-  border: 4px dashed rgba(190, 187, 187, 0.95); 
-  font-size: 20px;
-  font-weight: bold;
-  height: 100px;
-  width: 50%;
-  pointer-events: auto;
-  cursor: pointer;
-  box-shadow: 0px 3px 2px rgba(111, 80, 80, 0.32);
-}
-
-.middle-screen-info{
-  position: absolute;
-  top:  100%;
-  left: 50%;
-  width: 100%;
-  transform: translateX(-50%) translateY(-100%);
-  transition: background 0.2s;
-  color: rgb(2, 2, 2);
-  border: none;
-  font-size: 20px;
-  /* font-weight: bold; */
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  text-shadow: 0px 3px 2px rgba(111, 80, 80, 0.32);
-}
 
 .close-button {
   position: absolute;
@@ -175,46 +93,8 @@ body,
   color: grey;
 }
 
-.floor-warning {
-  position: absolute;
-  top: 98%;
-  left: 10px;
-  transform:  translateY(-98%);
-  /* background: rgba(255, 50, 50, 0.3); */
-  /* backdrop-filter: blur(10px); */
-  /* border-radius: 12px; */
-  padding: 12px 20px;
-  color: rgb(200, 35, 35);
-  font-family: 'Arial', sans-serif;
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
-  transition: opacity 0.3s ease;
-  display: flex;
-  align-items: center;
-}
 
-.floor-warning p {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 500;
-  text-shadow: 2px 2px 5px rgba(9, 9, 9, 0.639);
 
-}
-
-.floor-warning span {
-  font-size: 1.5rem;
-  margin-right: 5px;
-}
-
-.game-score {
-
-  padding: 5px 20px;
-
-  color: lightgray;
-
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-}
 
 .invisible-link {
   color: royalblue;
@@ -232,37 +112,24 @@ body,
 }
 
 
-.game-score h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.game-over-header {
+.intro-header {
   display: flex;           /* Arrange items in a row */
   align-items: center;     /* Vertically center items */
   justify-content: center; /* Center the entire row */
   gap: 10px;               /* Add space between elements */
 }
 
-.game-over-header h2 {
+.intro-header h2 {
   margin: 0;              /* Remove default margins */
 }
 
-.game-over-image {
+.intro-image {
   width: 50px;   /* Adjust the image size */
   height: auto;  /* Maintain aspect ratio */
 }
 
-.game-score p {
-  margin: -8px 0 0;
-  font-size: 2.5rem;
-  font-weight: 700;
-  /* text-shadow: 2px 2px 5px rgba(9, 9, 9, 0.639); */
-  text-shadow: 2px 2px 5px rgba(97, 97, 100, 0.972);
-}
 
-.game-over {
+.intro {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -283,7 +150,7 @@ body,
   cursor: pointer;
 }
 
-.game-over h2 {
+.intro h2 {
   font-size: 2.2rem;
   margin-top: 0.5rem;
   margin-bottom: -1rem;
@@ -291,14 +158,14 @@ body,
   text-shadow: 2px 2px 2px rgba(97, 97, 100, 0.5);
 }
 
-.game-over p {
+.intro p {
   color: #928f8f;
   margin-bottom: 1.5rem;
   font-size: 1rem;
   text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
 }
 
-.game-share {
+.credits {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -321,14 +188,14 @@ body,
   cursor: pointer;
 }
 
-.game-share p {
+.credits p {
   color: #928f8f;
   margin-bottom: 0.2rem;
   font-size: 1rem;
   text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
 }
 
-.game-over .score {
+.intro .score {
   font-size: 4rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -360,16 +227,7 @@ body,
   transform: translateY(0);
 }
 
-.middle-screen:active{
-  background: rgb(199, 220, 62);
-}
 
-
-.ARbutton:active{
-  background: royalblue;
-}
-
-/*XRDomOverlay */
 #interface {
   position: fixed;
   top: 0;
@@ -382,197 +240,6 @@ body,
 
 }
 
-#hit-test-instructions {
-  position: absolute;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  transform: translateY(-40%);
-  color: #faf8f8;
-  font-size: 22px;
-  background: indianred;
-  padding: 20px 20px 80px 20px;
-  text-align: left;
-  z-index: 100;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  
-}
-
-
-
-/* Position the button at the top right */
-#hit-test-instructions button {
-  position: absolute;
-  bottom: 20px;
-  right: 55px;
-  background: rosybrown;
-  color: white;
-  font-size: 20px;
-  font-weight: normal;
-  border: none;
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 35px;
-  border-radius: 10px;
-  cursor: pointer;
-  pointer-events: auto;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-  transition: background 0.2s ease-in-out, transform 0.1s;
-}
-
-
-
-.bottom-right {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 0; 
-  border-radius: 12px;
-  background: rgba(164, 169, 169, 0.5);
-  transition: background 0.2s;
-  color: black;
-  border: none;
-  font-size: 50px;
-  font-weight: bold;
-  width: 50px; 
-  height: 50px; 
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  line-height: 50px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
-  
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.bottom-right:active {
-  background: orange; 
-}
-
-
-.bottom-right-drop {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  border-radius: 12px;
-  background: royalblue;
-  transition: background 0.2s;
-  color: white;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-
-  height: 50px; 
-
-
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
-  
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.bottom-right-drop:active {
-  background: orange; 
-}
-
-.top-right-alt {
-  position: absolute;
-  top: 50px;
-  right: 20px;
-  border-radius: 20%;
-  background: rgba(164, 169, 169, 0.5);
-  transition: background 0.2s;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.top-right-alt:active {
-  background: orange; 
-}
-
-.top-right {
-  position: absolute;
-  top: 50px;
-  right: 20px;
-  border-radius: 20%;
-  background: indianred;
-  transition: background 0.2s;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.top-right:active {
-  background: grey; 
-}
-
-.top-right-second {
-  position: absolute;
-  top: 130px;
-  right: 20px;
-  border-radius: 20%;
-  background: rgb(232, 137, 55);
-  transition: background 0.2s;
-  color: #4dfff8;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.top-right-second:active {
-  background: red; 
-}
-
-.top-right-third {
-  position: absolute;
-  top: 210px;
-  right: 20px;
-  border-radius: 20%;
-  background: rgba(164, 169, 169, 0.5);
-  transition: background 0.2s;
-  color: #4dfff8;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.top-right-third:active {
-  background: orange; 
-}
 
 .vertical-left-column-topbased {
   position: absolute;
@@ -657,318 +324,25 @@ body,
 }
 
 
-
-.top-left:active {
-  background: orange; 
-}
-
-.top-right-fourth {
-  position: absolute;
-  top: 290px;
-  right: 20px;
-  border-radius: 20%;
-  background: rgba(164, 169, 169, 0.5);
-  transition: background 0.2s;
-  color: #4dfff8;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-  /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.top-right-third:active {
-  background: orange; 
-}
-
-.game-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  z-index: 1000;
-  font-family: 'Orbitron', sans-serif;
-  
-}
-
-.game-panel {
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 255, 0.5), 0 0 40px rgba(0, 0, 255, 0.3);
-  border: 2px solid #4080ff;
-  max-width: 90%;
-  width: 400px;
-  text-align: center;
-  pointer-events: auto;
-  color: white;
-  backdrop-filter: blur(5px);
-}
-
-/* Game Over Panel */
-.game-over-title {
-  color: #ff3333;
-  font-size: 2.5rem;
-  margin: 0 0 20px;
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-  animation: pulse 1.5s infinite alternate;
-}
-
-/* Start Panel */
-.game-title {
-  color: #4dfff8;
-  font-size: 2rem;
-  margin: 0 0 20px;
-  text-shadow: 0 0 10px rgba(77, 255, 248, 0.7);
-  letter-spacing: 2px;
-}
-
-/* Pause Panel */
-.pause-title {
-  color: #ffaa00;
-  font-size: 2rem;
-  margin: 0 0 20px;
-  text-shadow: 0 0 10px rgba(255, 170, 0, 0.7);
-}
-
-.pause-message {
-  font-size: 1rem;
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-/* Gameplay Panel */
-.gameplay-panel {
-  position: absolute;
-  top: 50px;
-  left: 20px;
-  width: auto;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-}
-
-.gameplay-header {
-  display: flex;
-  justify-content: space-between;
-  /* margin-bottom: 15px; */
-  font-size: 1.2rem;
-}
-
-.mode-display {
-  font-size: 1.1rem;
-  color: #ffffff;
-  margin-bottom: 15px;
-}
-
-.score-display {
-  font-size: 1.3rem;
-  color: #ffdd00;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-/* Resources */
-.resources {
-  margin-bottom: 15px;
-}
-
-.resource-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.resource-label {
-  width: 80px;
-  text-align: left;
-  margin-right: 0px;
-  color: #ffffff;
-}
-
-.resource-indicators {
-  display: flex;
-}
-
-.turnip-indicator, .life-indicator {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  border-radius: 4px;
-  opacity: 0.5;
-  transition: all 0.3s ease;
-}
-
-.turnip-indicator {
-  background-color: #b19e9e;
-  border: 1px solid #cababa;
-}
-
-.life-indicator {
-  background-color: #f44336;
-  border: 1px solid #ff6b5b;
-}
-
-.turnip-indicator.active, .life-indicator.active {
-  opacity: 1;
-  transform: scale(1.1);
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
-/* Buttons */
-.btn {
-  background: linear-gradient(to bottom, #333, #222);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 10px;
-  transition: all 0.3s ease;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-.start-btn {
-  background: linear-gradient(to bottom, #4caf50, #388e3c);
-  font-size: 1.2rem;
-  padding: 15px 30px;
-  margin: 20px 0;
-  width: 80%;
-}
-
-.play-again-btn {
-  background: linear-gradient(to bottom, #2196f3, #1976d2);
-  font-size: 1.2rem;
-  padding: 15px 30px;
-  margin: 20px 0;
-  width: 80%;
-}
-
-.resume-btn {
-  background: linear-gradient(to bottom, #4caf50, #388e3c);
-  font-size: 1.2rem;
-  padding: 15px 30px;
-  margin: 20px 0;
-  width: 80%;
-}
-
-.resume-btn.disabled {
-  background: linear-gradient(to bottom, #aaaaaa, #888888);
-  cursor: not-allowed;
-}
-
-.mute-btn {
-  background: linear-gradient(to bottom, #555555, #333333);
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  margin-top: 10px;
-}
-
-/* Mode Selection */
-.mode-selection {
-  margin-top: 20px;
-}
-
-.mode-title {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
-
-.mode-buttons {
-  display: flex;
-  justify-content: center;
-}
-
-.mode-btn {
-  background: #555555;
-  padding: 8px 16px;
-  margin: 0 5px;
-  font-size: 0.9rem;
-  min-width: 80px;
-}
-
-.mode-btn.easy-active {
-  background: linear-gradient(to bottom, #4caf50, #388e3c);
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
-}
-
-.mode-btn.medium-active {
-  background: linear-gradient(to bottom, #ff9800, #f57c00);
-  box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
-}
-
-.mode-btn.hard-active {
-  background: linear-gradient(to bottom, #f44336, #d32f2f);
-  box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
-}
-
-/* Animations */
-@keyframes pulse {
-  from {
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-  }
-  to {
-    text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 0.7);
-  }
-}
-
 /* Responsive styles */
 @media (max-width: 768px) {
-  .game-title, .game-over-title, .pause-title {
+  .game-title, .intro-title, .pause-title {
     font-size: 1.8rem;
-  }
-  
-  .gameplay-panel {
-    /* width: 90%; */
-    max-width: 300px;
-    left: 10px;
-  }
-  
-  .mode-buttons {
-    flex-direction: column;
-  }
-  
-  .mode-btn {
-    margin: 5px 0;
   }
 }
 
 /* Responsive styles */
 @media (max-width: 375px) {
-  .game-over {
+  .intro {
     min-width: 250px;
-    /* left: 20%;
-    transform: translate(-20%, -50%); */
     padding: 1rem;
   }
 
-  .vertical-left-column {
+  .vertical-left-column-topbased {
     gap: 20px;
   }
 
-  .vertical-right-column {
+  .vertical-right-column-topbased {
     gap: 20px;
   }
 
@@ -981,16 +355,21 @@ body,
     height: 45px;
   }
 
-  .game-share {
+  .credits {
     min-width: 250px;
-    /* top:70%;
-    transform: translate(-50%, -70%);  */
-    /* left: 20%;
-    transform: translate(-20%, -50%); */
     padding: 1rem;
   }
 
-  .game-over h2{
+  .intro h2{
     font-size: 1.8rem;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 600px) {
+  .vertical-left-column-topbased {
+    top: 40px; /* or whatever value you want */
+  }
+  .vertical-right-column-topbased {
+    top: 40px; /* or whatever value you want */
   }
 }

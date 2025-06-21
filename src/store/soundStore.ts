@@ -45,7 +45,8 @@ export const useSoundStore = create<SoundStore>()((set, get) => ({
         glass11: [3262, 283],
         glass12: [3617, 252],
       },
-      volume: 0.12,
+      // volume: 0.12,
+      volume: 0.2,
     });
 
     set({ sound });
