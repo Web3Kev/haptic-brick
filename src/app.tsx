@@ -12,6 +12,7 @@ import { Loader } from '@react-three/drei';
 import GameOverlayUI from './gameOverlayUi';
 import { useSoundStore } from './store/soundStore';
 import { useStore } from './store/store';
+import { Analytics } from '@vercel/analytics/next';
 
 
 export function BrickInstances() {
@@ -155,7 +156,7 @@ const haptic = (e: any) => {
 
      <div className="canvas-container">
       {/* <Loader/> */}
-      
+      <Analytics/>
       <Canvas
         camera={{ position: [0, 0.6, 4], fov: 80,near: 0.001, far: 1000 }}
         shadows
