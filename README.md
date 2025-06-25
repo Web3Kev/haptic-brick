@@ -1,5 +1,8 @@
 ### Haptic event example for iOS app Brrrowser
 
+Try live here : https://haptic-brick.vercel.app
+
+
 Throw balls inside a cube. Make them bounce.
 Each object colliding with the walls will create haptic feedback.
 
