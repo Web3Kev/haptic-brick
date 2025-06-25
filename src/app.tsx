@@ -12,7 +12,7 @@ import { Loader } from '@react-three/drei';
 import GameOverlayUI from './gameOverlayUi';
 import { useSoundStore } from './store/soundStore';
 import { useStore } from './store/store';
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from "@vercel/analytics/react"
 
 
 export function BrickInstances() {
