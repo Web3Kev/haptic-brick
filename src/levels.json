@@ -1,0 +1,162 @@
+[
+    {
+    "level": 0,
+    "totalBalls": 1,
+    "minimumDemolition": 80,
+    "bricks": [
+    
+      { "startPos": [0, 0, 0], "totalBricks": 10 }
+    
+    ]
+  },
+  {
+    "level": 1,
+    "totalBalls": 3,
+    "minimumDemolition": 75,
+    "bricks": [
+      { "startPos": [-1, 0, 0], "totalBricks": 10 },
+      { "startPos": [0, 0, 0], "totalBricks": 2 },
+      { "startPos": [1, 0, 0], "totalBricks": 10 },
+      { "startPos": [0, 0, 1], "totalBricks": 10 },
+      { "startPos": [0, 0, -1], "totalBricks": 10 }
+    ]
+  },
+  {
+    "level": 2,
+    "totalBalls": 2,
+    "minimumDemolition": 75,
+    "bricks": [
+      { "startPos": [-4, 0, 0], "totalBricks": 10 },
+      { "startPos": [4, 0, 0], "totalBricks": 10 },
+      { "startPos": [0, 0, 0], "totalBricks": 10 }
+    ]
+  }
+  ,
+  {
+  "level": 3,
+  "totalBalls": 3,
+  "minimumDemolition": 78,
+  "bricks": [
+    { "startPos": [-4, 0, 0], "totalBricks": 10 },
+    { "startPos": [-4, 0, 1], "totalBricks": 10 },
+    
+    { "startPos": [4, 0, 0], "totalBricks": 10 },
+    { "startPos": [4, 0, 1], "totalBricks": 10 },
+    
+     { "startPos": [6, 0, 0], "totalBricks": 10 },
+      { "startPos": [-6, 0, 0], "totalBricks": 10 },
+    
+        { "startPos": [0, 0, 0], "totalBricks": 10 }
+    
+
+  ]
+},
+ {
+  "level": 4,
+  "totalBalls": 3,
+  "minimumDemolition": 60,
+  "bricks": [
+    { "startPos": [-4, 0, -4], "totalBricks": 10 },
+    { "startPos": [-4, 0, 4], "totalBricks": 10 },
+    
+    { "startPos": [4, 0, 4], "totalBricks": 10 },
+    { "startPos": [4, 0, -4], "totalBricks": 10 },
+    
+        { "startPos": [0, 0, 0], "totalBricks": 10 }
+    
+
+  ]
+},
+{
+  "level": 5,
+  "totalBalls": 3,
+  "minimumDemolition": 60,
+  "bricks": [
+    { "startPos": [-4, 0, 0], "totalBricks": 10 },
+    
+
+    { "startPos": [-4, 0, 1], "totalBricks": 10 },
+
+    { "startPos": [4, 0, 0], "totalBricks": 10 },
+
+
+    { "startPos": [4, 0, 1], "totalBricks": 10 },
+
+    { "startPos": [-2, 0, 1], "totalBricks": 8 },
+    { "startPos": [-1, 0, 1], "totalBricks": 10 },
+    { "startPos": [0, 0, 1], "totalBricks": 8 },
+    { "startPos": [1, 0, 1], "totalBricks": 10 },
+    { "startPos": [2, 0, 1], "totalBricks": 8 }
+
+  ]
+},
+{
+  "level": 6,
+  "totalBalls": 2,
+  "minimumDemolition": 50,
+  "bricks": [
+    { "startPos": [-2, 0, 2], "totalBricks": 10 },
+    { "startPos": [-1, 0, 2], "totalBricks": 10 },
+    { "startPos": [0, 0, 2], "totalBricks": 10 },
+    { "startPos": [1, 0, 2], "totalBricks": 10 },
+    { "startPos": [2, 0, 2], "totalBricks": 10 },
+
+    { "startPos": [-2, 0, 1], "totalBricks": 10 },
+    { "startPos": [-1, 0, 1], "totalBricks": 1 },
+    { "startPos": [0, 0, 1], "totalBricks": 1 },
+    { "startPos": [1, 0, 1], "totalBricks": 1 },
+    { "startPos": [2, 0, 1], "totalBricks": 10 },
+
+    { "startPos": [-2, 0, 0], "totalBricks": 10 },
+    { "startPos": [-1, 0, 0], "totalBricks": 1 },
+    { "startPos": [0, 0, 0], "totalBricks": 1 },
+    { "startPos": [1, 0, 0], "totalBricks": 1 },
+    { "startPos": [2, 0, 0], "totalBricks": 10 },
+
+    { "startPos": [-2, 0, -2], "totalBricks": 10 },
+    { "startPos": [-1, 0, -2], "totalBricks": 10 },
+    { "startPos": [0, 0, -2], "totalBricks": 10 },
+    { "startPos": [1, 0, -2], "totalBricks": 10 },
+    { "startPos": [2, 0, -2], "totalBricks": 10 },
+
+    { "startPos": [-2, 0, -1], "totalBricks": 10 },
+    { "startPos": [-1, 0, -1], "totalBricks": 1 },
+    { "startPos": [0, 0, -1], "totalBricks": 1 },
+    { "startPos": [1, 0, -1], "totalBricks": 1 },
+    { "startPos": [2, 0, -1], "totalBricks": 10 },
+
+    { "startPos": [-1.5, 11, 1.5], "totalBricks": 5 },
+    { "startPos": [1.5, 11, 1.5], "totalBricks": 5 },
+    { "startPos": [-1.5, 11, -1.5], "totalBricks": 5 },
+    { "startPos": [1.5, 11, -1.5], "totalBricks": 5 }
+  ]
+},
+ {
+  "level": 7,
+  "totalBalls": 5,
+  "minimumDemolition": 50,
+  "bricks": [
+    { "startPos": [-4, 0, 0], "totalBricks": 10 },
+    { "startPos": [-3, 0, 0], "totalBricks": 10 },
+    { "startPos": [-3, 0, 1], "totalBricks": 10 },
+    { "startPos": [-4, 0, 1], "totalBricks": 10 },
+
+    { "startPos": [4, 0, 0], "totalBricks": 10 },
+    { "startPos": [3, 0, 0], "totalBricks": 10 },
+    { "startPos": [3, 0, 1], "totalBricks": 10 },
+    { "startPos": [4, 0, 1], "totalBricks": 10 },
+
+    { "startPos": [-2, 0, 1], "totalBricks": 8 },
+    { "startPos": [-1, 0, 1], "totalBricks": 10 },
+    { "startPos": [0, 0, 1], "totalBricks": 8 },
+    { "startPos": [1, 0, 1], "totalBricks": 10 },
+    { "startPos": [2, 0, 1], "totalBricks": 8 },
+
+    { "startPos": [-2, 0, 0], "totalBricks": 7 },
+    { "startPos": [-1, 0, 0], "totalBricks": 7 },
+    { "startPos": [0, 0, 0], "totalBricks": 7 },
+    { "startPos": [1, 0, 0], "totalBricks": 7 },
+    { "startPos": [2, 0, 0], "totalBricks": 7 }
+  ]
+}
+]

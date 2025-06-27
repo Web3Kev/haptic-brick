@@ -13,7 +13,7 @@ body,
 
   top: 0;
   left: 0;
-  background: rgb(238, 104, 104);
+  background: rgb(204, 201, 201);
   margin: 0;
   padding:0;
   overflow: hidden;
@@ -97,13 +97,14 @@ body,
 
 
 .invisible-link {
-  color: royalblue;
+  color: rgb(127, 126, 126);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   font-size: 20px;
   margin: 0;
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease;
+  padding-left: 5px;
 }
 
 .invisible-link:hover {
@@ -159,7 +160,7 @@ body,
 }
 
 .intro p {
-  color: #928f8f;
+  color: #070707;
   margin-bottom: 1.5rem;
   font-size: 1rem;
   text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
@@ -189,10 +190,17 @@ body,
 }
 
 .credits p {
-  color: #928f8f;
+  color: #252527;
   margin-bottom: 0.2rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
+}
+
+.credits h2 {
+
+  font-size: 2rem;
+  text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
+  margin-top: 0px;
 }
 
 .intro .score {
@@ -200,7 +208,7 @@ body,
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: lightgray;
-  text-shadow: 2px 2px 5px rgba(97, 97, 100, 0.972);
+  text-shadow: 2px 5px 5px rgba(97, 97, 100, 0.972);
 }
 
 .replay-button {
@@ -321,6 +329,89 @@ body,
   /* RE-ACTIVATE MOUSE EVENTS ON THIS ELEMENT (OVERRIDING THE PARENT) */
   pointer-events: auto;
   cursor: pointer;
+}
+
+.demolition-indicator {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  color: rgb(140, 12, 8);
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  line-height: 1.2;
+}
+
+.ballFeat {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+
+  color: white;
+  font-size: 3rem; /* or larger like 2rem */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: sans-serif;
+}
+
+.gameOverChoices{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.cannonBalls {
+  /* padding: 5px 20px; */
+  margin-left: 10px;
+  margin-top: 6px;
+  color: rgb(245, 243, 243);
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.cannonBallsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cannonBallVisual {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.cannonBallVisual::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3); /* Soft white glow */
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.cannonBalls p {
+  margin: -8px 0 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(8, 8, 8, 0.72);
 }
 
 
