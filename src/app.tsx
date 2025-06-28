@@ -1,12 +1,9 @@
 
 import { Canvas} from '@react-three/fiber';
 import { Physics, RigidBody, CuboidCollider, InstancedRigidBodies } from '@react-three/rapier';
-
-
 import  { useBrickModel } from './brick';
 import { Suspense, useEffect, useMemo, useRef } from 'react';
 import { InstancedMesh } from 'three';
-// import bricksData from "./level1.json";
 import levels from "./levels.json";
 import { SphereSpawner } from './sphereShooter';
 import { Loader } from '@react-three/drei';
@@ -15,17 +12,7 @@ import { useSoundStore } from './store/soundStore';
 import { useStore } from './store/store';
 import { Analytics } from "@vercel/analytics/react"
 import { CameraController } from './cameraController';
-
-// interface LevelData {
-//   level: number
-//   totalBalls: number
-//   minimumDemolition: number
-//   bricks: {
-//     startPos: [number, number, number]
-//     totalBricks: number
-//   }[]
-// }
-
+import Lights from './lights';
 
 
 export function useLevelBricks(level: number, brickSize: number, brickHeight: number, groundLevel: number) {
@@ -70,47 +57,35 @@ export function useLevelBricks(level: number, brickSize: number, brickHeight: nu
     setTotalBricks(bricksData.reduce((sum, b) => sum + b.totalBricks, 0))
   }, [bricksData, setTotalBricks])
 
-
-
   return instances
 }
 
 
-
-
 export function BrickInstances() {
+
   const { geometry, material } = useBrickModel();
   const ref = useRef<InstancedMesh>(null);
- const { playRandomGlassSound } = useSoundStore();
- const {gameStarted} = useStore();
- const level = useStore((state) => state.level)
+  const { playRandomGlassSound } = useSoundStore();
+  const {gameStarted} = useStore();
+  const level = useStore((state) => state.level)
+  const groundLevel = -1.9;
+  const brickSize = 0.30;
+  const brickHeight = 0.2;
+  const memoizedInstances = useLevelBricks(level, brickSize, brickHeight, groundLevel)
 
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.instanceMatrix.needsUpdate = true;
+    }
+  }, [memoizedInstances]);
 
-const groundLevel = -1.9;
-const brickSize = 0.30;
-const brickHeight = 0.2;
+  const addBrickOnFloor = useStore(s => s.addBrickOnFloor)
 
-
-const memoizedInstances = useLevelBricks(level, brickSize, brickHeight, groundLevel)
-
-
-useEffect(() => {
-  if (ref.current) {
-    ref.current.instanceMatrix.needsUpdate = true;
-  }
-}, [memoizedInstances]);
-
-const addBrickOnFloor = useStore(s => s.addBrickOnFloor)
-
- const handleCollisionEnter = (_e:any) => {
-   if(_e.totalForceMagnitude && _e.totalForceMagnitude >10 && gameStarted) playRandomGlassSound();
+  const handleCollisionEnter = (_e:any) => {
+    if(_e.totalForceMagnitude && _e.totalForceMagnitude >10 && gameStarted) playRandomGlassSound();
   };
 
-
-
-
-
-if (!gameStarted || memoizedInstances.length === 0) return null;
+  if (!gameStarted || memoizedInstances.length === 0) return null;
 
   return (
     <InstancedRigidBodies 
@@ -123,10 +98,8 @@ if (!gameStarted || memoizedInstances.length === 0) return null;
       friction={1}
       softCcdPrediction={1}
       colliderNodes={[
-        // <CuboidCollider args={[0.075, 0.05, 0.075]} position={[0,0,0]} />,
         <CuboidCollider args={[0.15, 0.1, 0.15]} position={[0,0,0]} />,
       ]}  
-  
       onContactForce={handleCollisionEnter}
       onCollisionEnter={({ target,other }) => { 
         const id = target.rigidBodyObject?.uuid;
@@ -136,43 +109,35 @@ if (!gameStarted || memoizedInstances.length === 0) return null;
             addBrickOnFloor(id);
           }
         }
-  }}
+      }}
     >
-      
        <instancedMesh
         ref={ref}
         args={[geometry, material, memoizedInstances.length]}
         castShadow
       />
-
     </InstancedRigidBodies>
   );
 }
 
 
 
-
 const Game = () => {
   const { initialize } = useSoundStore();
   const {gameStarted, gameOver} = useStore();
-  // const maxCannonBalls = useStore((s) => s.maxCannonBalls)
   
+  //initialize sound
    useEffect(()=>{
     initialize();
   },[initialize])
-
-  //    useEffect(()=>{
-  //     if(gameStarted)console.log("maxCannonBals",maxCannonBalls)
-  // },[maxCannonBalls, gameStarted])
   
-let lastVibrateTime = 0;
-const VIBRATE_THROTTLE_MS = 100; // Allow 1 vibration per 100ms
+  let lastVibrateTime = 0;
+  const VIBRATE_THROTTLE_MS = 100; // Allow 1 vibration per 100ms
 
-const haptic = (e: any) => {
+  const haptic = (e: any) => {
   const force = e.maxForceMagnitude;
 
   if (force && force > 4.5) {
-
     // Map 4.5–20 → 0.2–1.0, clamp anything >20 to 1.0
     const mapForce = (val: number) => {
       if (val >= 20) return 1.0;
@@ -192,7 +157,6 @@ const haptic = (e: any) => {
       ]);
     } 
     else if ("vibrate" in navigator) {
-
       const now = Date.now();
       if (now - lastVibrateTime < VIBRATE_THROTTLE_MS) {
         return; // Too soon, skip
@@ -203,12 +167,9 @@ const haptic = (e: any) => {
   }
 };
  
-
-
   return (
 
      <div className="canvas-container">
-      {/* <Loader/> */}
       <Analytics/>
       <Canvas
         camera={{ position: [-3, 0.5, -3], fov: 80,near: 0.001, far: 1000 }}
@@ -216,116 +177,80 @@ const haptic = (e: any) => {
       >
         <CameraController gameStarted={gameStarted} />
         <Suspense>
-        <ambientLight intensity={0.6} color={"white"}/>
-        <directionalLight position={[-2,2,2]} castShadow/>
- 
- 
-        <pointLight
-        args={[0,2,0]}
-        position={[-2,1.5,-2]}
-        intensity={80}
-        color={"grey"}
-        distance={5}
-        decay={2}
-        />
-          <pointLight
-        args={[0,2,0]}
-        position={[2,1.5,-2]}
-        intensity={80}
-        color={"grey"}
-        distance={5}
-        decay={2}
-        />
+          <Lights/>
+          
+          <Physics gravity={[0, -9.81, 0]} >
 
-         <pointLight
-        args={[0,2,0]}
-        position={[-2,1.5,2]}
-        intensity={80}
-        color={"grey"}
-        distance={5}
-        decay={2}
-        />
-          <pointLight
-        args={[0,2,0]}
-        position={[2,1.5,2]}
-        intensity={80}
-        color={"grey"}
-        distance={5}
-        decay={2}
-        />
-
-         
+            {gameStarted && <BrickInstances />}
+            {gameStarted && !gameOver &&  <SphereSpawner /> }
         
-        <Physics gravity={[0, -9.81, 0]} >
-
-   
-          {gameStarted && <BrickInstances />}
-          {gameStarted && !gameOver &&  <SphereSpawner /> }
-      
-
-          <RigidBody name="ground" type='fixed' position={[0,-2,0]} restitution={0}  onContactForce={haptic} >
-            <mesh receiveShadow>
-              <boxGeometry args={[6,0.1,6]}/>
-               <meshStandardMaterial color={"white"} metalness={.1} roughness={0.6}/>
-            </mesh>
-          </RigidBody>
-          <RigidBody name="top" type='fixed' position={[0,3,0]} onContactForce={haptic}>
-            <mesh receiveShadow>
-              <boxGeometry args={[6,0.1,6]}/>
-              <meshStandardMaterial color={"white"} metalness={.1} roughness={0.6}/>
-         
-            </mesh>
-          </RigidBody>
-           <RigidBody name="leftWall" type='fixed' position={[-3,0.5,0]} onContactForce={haptic}>
-            <mesh receiveShadow rotation={[0,Math.PI/2,0]}>
-              {/* <boxGeometry args={[0.1,5,6]}/> */}
-               <planeGeometry args={[6,5]} />
-              <meshStandardMaterial color={"white"} metalness={.1} roughness={0.6}/>
-            </mesh>
-          </RigidBody>
-           <RigidBody name="rightWall" type='fixed' position={[3,0.5,0]} onContactForce={haptic}>
-            <mesh receiveShadow rotation={[0,-Math.PI/2,0]}>
-              {/* <boxGeometry args={[0.1,5,6]}/> */}
-              <planeGeometry args={[6,5]} />
+            <RigidBody name="ground" type='fixed' position={[0,-2,0]} restitution={0}  onContactForce={haptic} >
+              <mesh receiveShadow>
+                <boxGeometry args={[6,0.1,6]}/>
                 <meshStandardMaterial 
                   color={"white"} 
                   metalness={.1} 
                   roughness={0.6}
-                  // side={BackSide}
                 />
-            </mesh>
-          </RigidBody>
-          <RigidBody name="backWall" type='fixed' position={[0,0.5,-3]} onContactForce={haptic}>
-            <mesh receiveShadow>
-              {/* <boxGeometry args={[6,5,0.1]}/> */}
-                 <planeGeometry args={[6,5]} />
-               <meshStandardMaterial color={"white"} metalness={.1} roughness={0.6}/>
-            </mesh>
-          </RigidBody>
-           <RigidBody name="frontWall" type='fixed' position={[0,0.5,3]}>
-           <mesh receiveShadow rotation={[0,-Math.PI,0]}>
-              {/* <boxGeometry args={[6,5,0.1]}/> */}
-                 <planeGeometry args={[6,5]} />
-               <meshStandardMaterial color={"white"} metalness={.1} roughness={0.6}/>
-            </mesh>
-            {/* <CuboidCollider  args={[3,2.5,0.1]}/> */}
-          </RigidBody>
+              </mesh>
+            </RigidBody>
+            <RigidBody name="top" type='fixed' position={[0,3,0]} onContactForce={haptic}>
+              <mesh receiveShadow>
+                <boxGeometry args={[6,0.1,6]}/>
+                <meshStandardMaterial 
+                  color={"white"} 
+                  metalness={.1} 
+                  roughness={0.6}
+                />
+              </mesh>
+            </RigidBody>
+            <RigidBody name="leftWall" type='fixed' position={[-3,0.5,0]} onContactForce={haptic}>
+              <mesh receiveShadow rotation={[0,Math.PI/2,0]}>
+                <planeGeometry args={[6,5]} />
+                <meshStandardMaterial 
+                  color={"white"} 
+                  metalness={.1} 
+                  roughness={0.6}
+                />
+              </mesh>
+            </RigidBody>
+            <RigidBody name="rightWall" type='fixed' position={[3,0.5,0]} onContactForce={haptic}>
+              <mesh receiveShadow rotation={[0,-Math.PI/2,0]}>
+                <planeGeometry args={[6,5]} />
+                  <meshStandardMaterial 
+                    color={"white"} 
+                    metalness={.1} 
+                    roughness={0.6}
+                  />
+              </mesh>
+            </RigidBody>
+            <RigidBody name="backWall" type='fixed' position={[0,0.5,-3]} onContactForce={haptic}>
+              <mesh receiveShadow>
+                <planeGeometry args={[6,5]} />
+                <meshStandardMaterial 
+                  color={"white"} 
+                  metalness={.1} 
+                  roughness={0.6}
+                />
+              </mesh>
+            </RigidBody>
+            <RigidBody name="frontWall" type='fixed' position={[0,0.5,3]}>
+            <mesh receiveShadow rotation={[0,-Math.PI,0]}>
+                <planeGeometry args={[6,5]} />
+                <meshStandardMaterial 
+                  color={"white"} 
+                  metalness={.1} 
+                  roughness={0.6}
+                />
+              </mesh>
+            </RigidBody>
 
-             
-
-        </Physics>
-        {/* <OrbitControls 
-          enablePan={false} 
-          enableZoom = {false}
-          minPolarAngle={Math.PI / 2.2}
-          maxPolarAngle={Math.PI /2.2}
-        /> */}
+          </Physics>
         </Suspense>
       </Canvas>
+
       <Loader/>
       <GameOverlayUI/>
-
-      
     </div>
   );
 }
