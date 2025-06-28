@@ -9,7 +9,7 @@ import { useSoundStore } from './store/soundStore';
 export function SphereSpawner() {
   const { camera } = useThree();
   const [spheres, setSpheres] = useState<any[]>([]);
-  const {gameStarted,cannonBallShot,maxCannonBalls,setGameOver, gameOver } = useStore();
+  const {gameStarted,cannonBallShot,maxCannonBalls,setGameOver, gameOver,vibrationEnabled } = useStore();
   const {playSound } = useSoundStore();
  
    const timerStartedRef = useRef(false);
@@ -20,12 +20,15 @@ const shoot = useCallback((e: MouseEvent ) => {
   if(cannonBallShot >= maxCannonBalls) {
     playSound("error")
 
-    if ((navigator as any).haptic) {
-      (navigator as any).haptic("error");
-    } 
-    else 
-    if ("vibrate" in navigator) {
-      navigator.vibrate([50,100,50,100,50]);
+    if(vibrationEnabled)
+    {
+      if ((navigator as any).haptic) {
+        (navigator as any).haptic("error");
+      } 
+      else 
+      if ("vibrate" in navigator) {
+        navigator.vibrate([50,100,50,100,50]);
+      }
     }
 
     if (!timerStartedRef.current) {

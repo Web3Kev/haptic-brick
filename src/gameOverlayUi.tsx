@@ -7,20 +7,24 @@ const GameOverlayUI = () => {
 
     const [showInfo, setShowInfo] = useState<boolean>(false);
 
-    const { playSound } = useSoundStore();
+    const { playSound,toggleMute, isMuted } = useSoundStore();
 
-    const {gameStarted, setGameStarted,cannonBallShot,maxCannonBalls, resetGame, setGameOver, minimumDemolition,currentDemolition, gameOver, nextLevel,level} = useStore()
+    const {gameStarted, setGameStarted,cannonBallShot,maxCannonBalls, resetGame, setGameOver, minimumDemolition,currentDemolition, gameOver, nextLevel,level, vibrationEnabled,toggleVibrations} = useStore()
 
     const buttonVibrate = () =>{
-       if (navigator.haptic) {
-      navigator.haptic([
-        { intensity: 0.7, sharpness: 0.1 },
-        // { intensity: 0.8, sharpness: 0.3, duration: 100 }
-      ]);
-    } else if('vibrate' in navigator) {
-      navigator.vibrate(10); 
+      if(vibrationEnabled)
+      {
+        if (navigator.haptic) {
+              navigator.haptic([
+            { intensity: 0.7, sharpness: 0.1 },
+            // { intensity: 0.8, sharpness: 0.3, duration: 100 }
+          ]);
+        } else if('vibrate' in navigator) {
+          navigator.vibrate(10); 
+          }
+        }
       }
-    }
+    
 
     useEffect(()=>{
 
@@ -112,8 +116,69 @@ const GameOverlayUI = () => {
               height: "45px",
               objectFit: "contain",
             }}/>
-        
         </button>}        
+
+        {/* AUDIO MUTE BUTTON */}
+        <button 
+          className="icon-right"
+          onClick={(e)=>{
+            e.stopPropagation();
+            toggleMute(); 
+            buttonVibrate();
+          }}
+          style={{
+            background: isMuted?"rgba(232, 137, 55,0.5)":"rgba(164, 169, 169,0.5)",
+          }}
+        >
+          {isMuted ? 
+          ((<img 
+            src="soundoff.png"  
+            alt="audio off"
+            style={{
+              width: "45px", 
+              height: "45px",
+              objectFit: "contain",
+            }}/>)) : ((<img 
+              src="soundon.png"  
+              alt="audio on"
+              style={{
+                width: "45px", 
+                height: "45px",
+                objectFit: "contain",
+              }}/>))}
+        
+        </button>
+
+        {/* VIBRATION MUTE BUTTON */}
+        <button 
+          className="icon-right"
+          onClick={(e)=>{
+            e.stopPropagation();
+            toggleVibrations(); 
+            buttonVibrate();
+          }}
+          style={{
+            background: vibrationEnabled?"rgba(164, 169, 169,0.5)":"rgba(232, 137, 55,0.5)",
+          }}
+        >
+          {vibrationEnabled ? 
+          ((<img 
+            src="vibrationOn.png"  
+            alt="vibration on"
+            style={{
+              width: "45px", 
+              height: "45px",
+              objectFit: "contain",
+            }}/>)) : ((<img 
+              src="vibrationOff.png"  
+              alt="vibration off"
+              style={{
+                width: "45px", 
+                height: "45px",
+                objectFit: "contain",
+              }}/>))}
+        
+        </button>
 
       </div>
 

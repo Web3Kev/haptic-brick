@@ -114,7 +114,7 @@ export function BrickInstances() {
 
 const Game = () => {
   const { initialize } = useSoundStore();
-  const {gameStarted, gameOver} = useStore();
+  const {gameStarted, gameOver, vibrationEnabled} = useStore();
   
   //initialize sound
    useEffect(()=>{
@@ -141,19 +141,24 @@ const Game = () => {
 
       const intensity = mapForce(force);
 
-      if ((navigator as any).haptic) {
-        (navigator as any).haptic([
-          { intensity, sharpness: 0.8 }
-        ]);
-      } 
-      else if ("vibrate" in navigator) {
-        const now = Date.now();
-        if (now - lastVibrateTime < VIBRATE_THROTTLE_MS) {
-          return; // Too soon, skip
+      if(vibrationEnabled)
+      {
+        if ((navigator as any).haptic) {
+          (navigator as any).haptic([
+            { intensity, sharpness: 0.8 }
+          ]);
+        } 
+        else if ("vibrate" in navigator) {
+          const now = Date.now();
+          if (now - lastVibrateTime < VIBRATE_THROTTLE_MS) {
+            return; // Too soon, skip
+          }
+          lastVibrateTime = now;
+          navigator.vibrate(5);
         }
-        lastVibrateTime = now;
-        navigator.vibrate(5);
+
       }
+     
     }
   };
 

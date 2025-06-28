@@ -13,6 +13,7 @@ interface StoreState {
   onFloorAtStart: number;
   currentDemolition: number; 
   minimumDemolition:number;
+  vibrationEnabled:boolean;
 
   setGameStarted: (value: boolean) => void;
   setGameOver: (value: boolean) => void;
@@ -26,6 +27,7 @@ interface StoreState {
   resetBricksonFloor: () => void;
   addBrickOnFloor: (id: string) => void;
   resetGame: () => void; 
+  toggleVibrations: () => void;
 }
 
 export const useStore = create<StoreState>((set,get) => ({
@@ -41,6 +43,7 @@ export const useStore = create<StoreState>((set,get) => ({
   onFloorAtStart:0,
   currentDemolition: 0,
   minimumDemolition:50,
+  vibrationEnabled:true,
 
   setGameOver: (value) => set({ gameOver: value }),
   setGameStarted: (value) => set({ gameStarted: value }),
@@ -52,6 +55,7 @@ export const useStore = create<StoreState>((set,get) => ({
   addCannonBallShot: () => set({ cannonBallShot: get().cannonBallShot+1 }),
   setTotalBricks: (value) => set({ totalBricks: value }),
   resetBricksonFloor: () => set({ bricksonFloor: 0 }),
+  toggleVibrations: () => set((state) => ({ vibrationEnabled: !state.vibrationEnabled })),
   addBrickOnFloor: (id) => {
     const current = get();
     if (current.fallenBricks.has(id)) return;
