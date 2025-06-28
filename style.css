@@ -174,15 +174,15 @@ body,
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(20px);
   border-radius: 16px;
-  padding: 2rem;
+  /* padding: 2rem; */
   color: indianred;
   text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
   text-align: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  min-width: 300px;
-  min-height: 200px;
-  /* max-height:350px; */
+  width: 90vw;
+  max-width: 450px;
+  min-height: 340px;
   z-index: 10;
 
   pointer-events: auto;
@@ -194,13 +194,16 @@ body,
   margin-bottom: 0.2rem;
   font-size: 1.2rem;
   text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .credits h2 {
 
   font-size: 2rem;
   text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
-  margin-top: 0px;
+  margin: 20px;
+
 }
 
 .intro .score {
@@ -333,7 +336,7 @@ body,
 
 .demolition-indicator {
   position: absolute;
-  top: 50px;
+  top: 15px;
   left: 50%;
   transform: translateX(-50%);
   background: transparent;
@@ -446,10 +449,6 @@ body,
     height: 45px;
   }
 
-  .credits {
-    min-width: 250px;
-    padding: 1rem;
-  }
 
   .intro h2{
     font-size: 1.8rem;
@@ -463,4 +462,11 @@ body,
   .vertical-right-column-topbased {
     top: 40px; /* or whatever value you want */
   }
+
+  .demolition-indicator {
+  top: 40px;
+  }
+
+
 }
+

@@ -130,9 +130,9 @@ const GameOverlayUI = () => {
       </div>
 
      {gameStarted &&<div className="demolition-indicator">
-      <div>{currentDemolition}%</div>
-      <div style={{ fontSize: '1.1rem' }}>Demolished</div>
-      <div style={{ fontSize: '1.1rem' }}>({minimumDemolition}% required)</div>
+      <div>{currentDemolition}% 
+      <span style={{ fontSize: '1.1rem', paddingLeft:"5px" }}>Demolished</span></div>
+      <div style={{ fontSize: '1.1rem',color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(243, 238, 238, 0.3)" }}>({minimumDemolition}% required)</div>
     </div>}
 
        <div className="vertical-left-column-topbased ">
@@ -152,15 +152,21 @@ const GameOverlayUI = () => {
 
       
 
-       { (cannonBallShot>=1) && <div className="vertical-right-column-bottombased">
+       <div className="vertical-right-column-bottombased">
 
         {/* RELOAD BUTTON */}
-        {(gameStarted) &&<button 
+       <button 
           className="icon-right"
+          style={{display:gameStarted && cannonBallShot>=1?"flex":"none"}}
           onClick={(e)=>{
-            e.stopPropagation(); 
-            Reset();
+            if(gameStarted && cannonBallShot>=1)
+            {
+              e.stopPropagation(); 
+              Reset();
+            }
+           
           }}
+
         >
           <img 
             src="reload.png"  
@@ -171,10 +177,10 @@ const GameOverlayUI = () => {
               objectFit: "contain",
             }}/>
         
-        </button>}
+        </button>
         
 
-      </div>}
+      </div>
       
       
 
@@ -242,7 +248,7 @@ const GameOverlayUI = () => {
             buttonVibrate();}}>✖</button></div>
            <>
             <h2>Haptic Brick</h2>
-            <p >made by</p>
+            <p >made by
             
             <a
               href="https://bsky.app/profile/webxr.bsky.social"
@@ -251,15 +257,16 @@ const GameOverlayUI = () => {
               className="invisible-link"
             >
               Kevin Thien
-            </a>
-            <p>using</p>
-            <p style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>R3F</p>
-            <p style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Rapier</p>
-            <p>3D Model:</p>
-            <p style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>"2x2 Lego Brick"</p>
-            <p  style={{ marginTop:"0"}}>by:</p>
-            <p style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", margin:"0" }}>Aleks P</p>
-            <p>This mini project is to illustrate the use of navigation.vibrate() and especially its custom integration in the vibration enabling iOS app  
+            </a></p>
+            <p>using 
+            <span style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", paddingLeft:"5px" }}>R3F</span> & 
+            <span style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", paddingLeft:"5px" }}>Rapier </span></p>
+
+            <p>3D Model:
+            <span style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", paddingLeft:"5px" }}>"2x2 Lego Brick"</span></p>
+            <p  style={{ marginTop:"0"}}>by:
+            <span style={{ color: "rgb(127, 126, 126)", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", fontSize:"20px", paddingLeft:"5px" }}>Aleks P</span></p>
+            <p style={{paddingBottom:"15px"}}>This mini project is to illustrate the use of navigation.vibrate() and especially its custom integration in the vibration enabling iOS app  
               <a
               href="https://web3kev.github.io/Brrrowser/"
               target="_blank"
