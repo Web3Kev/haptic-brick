@@ -10,12 +10,12 @@ export function SphereSpawner() {
   const { camera } = useThree();
   const [spheres, setSpheres] = useState<any[]>([]);
   const {gameStarted,cannonBallShot,maxCannonBalls,setGameOver, gameOver } = useStore();
-   const {playSound } = useSoundStore();
+  const {playSound } = useSoundStore();
  
-   let timerStarted = false;
+   const timerStartedRef = useRef(false);
 
 const shoot = useCallback((e: MouseEvent ) => {
-  if (gameOver) return; // Only proceed if game has started
+  if (gameOver) return; 
 
   if(cannonBallShot >= maxCannonBalls) {
     playSound("error")
@@ -28,11 +28,11 @@ const shoot = useCallback((e: MouseEvent ) => {
       navigator.vibrate([50,100,50,100,50]);
     }
 
-    if (!timerStarted) {
-      timerStarted = true;
+    if (!timerStartedRef.current) {
+      timerStartedRef.current = true;
       setTimeout(() => {
         setGameOver(true);
-        timerStarted = false;
+        timerStartedRef.current = false;
       }, 1000);
     }
     return;
@@ -65,10 +65,6 @@ const shoot = useCallback((e: MouseEvent ) => {
 
 }, [camera, gameStarted, maxCannonBalls, cannonBallShot]);
 
-  // useEffect(() => {
-  //   window.addEventListener('click', shoot);
-  //   return () => window.removeEventListener('click', shoot);
-  // }, [shoot]);
 
  useEffect(() => {
   let startX = 0;
@@ -157,11 +153,11 @@ function Sphere({
     }
   });
 
-  // 👇 Remove sphere after 10 seconds
+  // Remove sphere after 10 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       onExpire(id);
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [id, onExpire]);
 

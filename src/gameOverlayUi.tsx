@@ -3,21 +3,13 @@ import { useSoundStore } from './store/soundStore';
 import { useStore } from './store/store';
 import { animated, useSpring } from '@react-spring/web';
 
-
-
-
 const GameOverlayUI = () => {
-
-
-
-
 
     const [showInfo, setShowInfo] = useState<boolean>(false);
 
     const { playSound } = useSoundStore();
 
     const {gameStarted, setGameStarted,cannonBallShot,maxCannonBalls, resetGame, setGameOver, minimumDemolition,currentDemolition, gameOver, nextLevel,level} = useStore()
-
 
     const buttonVibrate = () =>{
        if (navigator.haptic) {
@@ -37,8 +29,6 @@ const GameOverlayUI = () => {
           setGameOver(true);
       }
     },[currentDemolition, minimumDemolition])
-
-
 
     const [trigger, setTrigger] = useState(false);
 
@@ -98,8 +88,6 @@ const GameOverlayUI = () => {
     const startAfter = (time: number, callback: () => void) => {
       setTimeout(callback, time);
     };
-
-
 
 
   return (

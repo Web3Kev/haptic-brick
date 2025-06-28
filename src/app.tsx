@@ -3,7 +3,7 @@ import { Canvas} from '@react-three/fiber';
 import { Physics, RigidBody, CuboidCollider, InstancedRigidBodies } from '@react-three/rapier';
 import  { useBrickModel } from './brick';
 import { Suspense, useEffect, useMemo, useRef } from 'react';
-import { InstancedMesh } from 'three';
+import { InstancedMesh, MeshStandardMaterial } from 'three';
 import levels from "./levels.json";
 import { SphereSpawner } from './sphereShooter';
 import { Loader } from '@react-three/drei';
@@ -16,10 +16,8 @@ import Lights from './lights';
 
 
 export function useLevelBricks(level: number, brickSize: number, brickHeight: number, groundLevel: number) {
-  const setTotalBricks = useStore((s) => s.setTotalBricks)
-  const setMaxCannonBalls = useStore((s) => s.setMaxCannonBalls)
-  const setMinDemo = useStore((s) => s.setMinDemo)
-  const {setLevel, setGameStarted} = useStore();
+
+  const {setLevel, setGameStarted, setMinDemo, setMaxCannonBalls, setTotalBricks} = useStore();
 
   const { bricksData, instances } = useMemo(() => {
     const levelData = levels.find((l) => l.level === level)
@@ -66,21 +64,13 @@ export function BrickInstances() {
   const { geometry, material } = useBrickModel();
   const ref = useRef<InstancedMesh>(null);
   const { playRandomGlassSound } = useSoundStore();
-  const {gameStarted} = useStore();
-  const level = useStore((state) => state.level)
+  const {gameStarted, level, addBrickOnFloor} = useStore();
+ 
   const groundLevel = -1.9;
   const brickSize = 0.30;
   const brickHeight = 0.2;
   const memoizedInstances = useLevelBricks(level, brickSize, brickHeight, groundLevel)
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.instanceMatrix.needsUpdate = true;
-    }
-  }, [memoizedInstances]);
-
-  const addBrickOnFloor = useStore(s => s.addBrickOnFloor)
-
+  
   const handleCollisionEnter = (_e:any) => {
     if(_e.totalForceMagnitude && _e.totalForceMagnitude >10 && gameStarted) playRandomGlassSound();
   };
@@ -135,37 +125,45 @@ const Game = () => {
   const VIBRATE_THROTTLE_MS = 100; // Allow 1 vibration per 100ms
 
   const haptic = (e: any) => {
-  const force = e.maxForceMagnitude;
+    const force = e.maxForceMagnitude;
 
-  if (force && force > 4.5) {
-    // Map 4.5–20 → 0.2–1.0, clamp anything >20 to 1.0
-    const mapForce = (val: number) => {
-      if (val >= 20) return 1.0;
-      const minVal = 4.5;
-      const maxVal = 20;
-      const minMapped = 0.2;
-      const maxMapped = 1.0;
-      const scaled = (val - minVal) / (maxVal - minVal); // 0–1
-      return minMapped + scaled * (maxMapped - minMapped);
-    };
+    if (force && force > 4.5) {
+      // Map 4.5–20 → 0.2–1.0, clamp anything >20 to 1.0
+      const mapForce = (val: number) => {
+        if (val >= 20) return 1.0;
+        const minVal = 4.5;
+        const maxVal = 20;
+        const minMapped = 0.2;
+        const maxMapped = 1.0;
+        const scaled = (val - minVal) / (maxVal - minVal); // 0–1
+        return minMapped + scaled * (maxMapped - minMapped);
+      };
 
-    const intensity = mapForce(force);
+      const intensity = mapForce(force);
 
-    if ((navigator as any).haptic) {
-      (navigator as any).haptic([
-        { intensity, sharpness: 0.8 }
-      ]);
-    } 
-    else if ("vibrate" in navigator) {
-      const now = Date.now();
-      if (now - lastVibrateTime < VIBRATE_THROTTLE_MS) {
-        return; // Too soon, skip
+      if ((navigator as any).haptic) {
+        (navigator as any).haptic([
+          { intensity, sharpness: 0.8 }
+        ]);
+      } 
+      else if ("vibrate" in navigator) {
+        const now = Date.now();
+        if (now - lastVibrateTime < VIBRATE_THROTTLE_MS) {
+          return; // Too soon, skip
+        }
+        lastVibrateTime = now;
+        navigator.vibrate(5);
       }
-      lastVibrateTime = now;
-      navigator.vibrate(5);
     }
-  }
-};
+  };
+
+  const whiteWallMaterial = useMemo(() => (
+    new MeshStandardMaterial({
+      color: "white",
+      metalness: 0.1,
+      roughness: 0.6,
+    })
+  ), []);
  
   return (
 
@@ -185,63 +183,33 @@ const Game = () => {
             {gameStarted && !gameOver &&  <SphereSpawner /> }
         
             <RigidBody name="ground" type='fixed' position={[0,-2,0]} restitution={0}  onContactForce={haptic} >
-              <mesh receiveShadow>
+              <mesh receiveShadow material={whiteWallMaterial}>
                 <boxGeometry args={[6,0.1,6]}/>
-                <meshStandardMaterial 
-                  color={"white"} 
-                  metalness={.1} 
-                  roughness={0.6}
-                />
               </mesh>
             </RigidBody>
             <RigidBody name="top" type='fixed' position={[0,3,0]} onContactForce={haptic}>
-              <mesh receiveShadow>
+              <mesh receiveShadow material={whiteWallMaterial}>
                 <boxGeometry args={[6,0.1,6]}/>
-                <meshStandardMaterial 
-                  color={"white"} 
-                  metalness={.1} 
-                  roughness={0.6}
-                />
               </mesh>
             </RigidBody>
             <RigidBody name="leftWall" type='fixed' position={[-3,0.5,0]} onContactForce={haptic}>
-              <mesh receiveShadow rotation={[0,Math.PI/2,0]}>
+              <mesh receiveShadow rotation={[0,Math.PI/2,0]} material={whiteWallMaterial}>
                 <planeGeometry args={[6,5]} />
-                <meshStandardMaterial 
-                  color={"white"} 
-                  metalness={.1} 
-                  roughness={0.6}
-                />
               </mesh>
             </RigidBody>
             <RigidBody name="rightWall" type='fixed' position={[3,0.5,0]} onContactForce={haptic}>
-              <mesh receiveShadow rotation={[0,-Math.PI/2,0]}>
+              <mesh receiveShadow rotation={[0,-Math.PI/2,0]} material={whiteWallMaterial}>
                 <planeGeometry args={[6,5]} />
-                  <meshStandardMaterial 
-                    color={"white"} 
-                    metalness={.1} 
-                    roughness={0.6}
-                  />
               </mesh>
             </RigidBody>
             <RigidBody name="backWall" type='fixed' position={[0,0.5,-3]} onContactForce={haptic}>
-              <mesh receiveShadow>
+              <mesh receiveShadow material={whiteWallMaterial}>
                 <planeGeometry args={[6,5]} />
-                <meshStandardMaterial 
-                  color={"white"} 
-                  metalness={.1} 
-                  roughness={0.6}
-                />
               </mesh>
             </RigidBody>
             <RigidBody name="frontWall" type='fixed' position={[0,0.5,3]}>
-            <mesh receiveShadow rotation={[0,-Math.PI,0]}>
+            <mesh receiveShadow rotation={[0,-Math.PI,0]} material={whiteWallMaterial}>
                 <planeGeometry args={[6,5]} />
-                <meshStandardMaterial 
-                  color={"white"} 
-                  metalness={.1} 
-                  roughness={0.6}
-                />
               </mesh>
             </RigidBody>
 
