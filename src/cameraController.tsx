@@ -36,6 +36,11 @@ export function CameraController({ gameStarted }: { gameStarted: boolean }) {
     const onDown = (e: PointerEvent) => {
       isDragging.current = true
       startX.current = e.clientX
+
+      // abort the spin
+      if (spinning.current) {
+        spinning.current = false 
+      }
     }
 
     const onMove = (e: PointerEvent) => {
@@ -77,7 +82,9 @@ export function CameraController({ gameStarted }: { gameStarted: boolean }) {
 }, [gameStarted])
 
   useFrame(() => {
+  
   if (spinning.current) {
+
     const duration = 100
     const t = frame.current / duration
 
@@ -105,7 +112,8 @@ export function CameraController({ gameStarted }: { gameStarted: boolean }) {
     camera.lookAt(TARGET)
 
     frame.current++
-  } else {
+  } else if(isDragging.current){
+ 
     // manual drag rotation
     const angle = angleY.current
     const x = Math.sin(angle) * defaultDistance.current
@@ -113,6 +121,8 @@ export function CameraController({ gameStarted }: { gameStarted: boolean }) {
     camera.position.set(x, height.current, z)
     camera.lookAt(TARGET)
   }
+
+
 })
 
   return null
